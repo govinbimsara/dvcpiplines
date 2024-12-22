@@ -8,8 +8,8 @@ stages:
     - preprocess.X
     - preprocess.input
     - preprocess.output
-    - preprocess.y
     - preprocess.random_state
+    - preprocess.y
     outs:
     - data/preprocessed/data.csv
     - data/test/X_data.csv
