@@ -27,5 +27,5 @@ def preprocess(input_path,output_path,random_state,eval_x,eval_y):
     os.makedirs(os.path.dirname(eval_y),exist_ok=True)
     y_test.to_csv(eval_y,index=False)
 
-# if __name__ =="__main__":
-#     preprocess(params['input'],params['output'],params['random_state'],params['X'],params['y'])
+if __name__ =="__main__":
+    preprocess(params['input'],params['output'],params['random_state'],params['X'],params['y'])

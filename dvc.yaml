@@ -1,0 +1,42 @@
+stages:
+  preprocess:
+    cmd: python src/preprocess.py
+    deps:
+    - data/raw/data.csv
+    - src/preprocess.py
+    params:
+    - preprocess.X
+    - preprocess.input
+    - preprocess.output
+    - preprocess.y
+    - preprocess.random_state
+    outs:
+    - data/preprocessed/data.csv
+    - data/test/X_data.csv
+    - data/test/y_data.csv
+  train:
+    cmd: python src/train.py
+    deps:
+    - data/preprocessed/data.csv
+    - src/train.py
+    params:
+    - train.input
+    - train.max_depth
+    - train.min_samples_leaf
+    - train.min_samples_split
+    - train.model
+    - train.n_estimators
+    - train.random_state
+    outs:
+    - model/model.pkl
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+    - data/test/X_data.csv
+    - data/test/y_data.csv
+    - model/model.pkl
+    - src/evaluate.py
+    params:
+    - eval.X
+    - eval.model
+    - eval.y

@@ -32,5 +32,5 @@ def evaluate(X,y,model_path):
     mlflow.log_text(str(cm),"confusion_matrix.txt")
     mlflow.log_text(cr,"classification_report.txt")
 
-# if __name__ =="__main__":
-#     evaluate(params['X'],params['y'],params['model'])
+if __name__ =="__main__":
+    evaluate(params['X'],params['y'],params['model'])

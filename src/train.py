@@ -89,5 +89,5 @@ def train(data_path,model_path,random_state):
 
         print(f'Model saved to {model_path}')
 
-# if __name__ =="__main__":
-#     train(params['input'],params['model'],params['random_state'])
+if __name__ =="__main__":
+    train(params['input'],params['model'],params['random_state'])
