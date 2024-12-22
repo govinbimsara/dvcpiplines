@@ -1,0 +1,20 @@
+preprocess:
+  input: data/raw/data.csv
+  output: data/preprocessed/data.csv
+  X: data/test/X_data.csv
+  y: data/test/y_data.csv
+  random_state: 88
+
+train:
+  input: data/preprocessed/data.csv
+  model: model/model.pkl
+  random_state: 88
+  n_estimators: [10, 50, 100]
+  max_depth: [5, 10, 20, null]
+  min_samples_split: [2, 3, 5]
+  min_samples_leaf: [1, 2, 3]
+
+eval:
+  X: data/test/X_data.csv
+  y: data/test/y_data.csv
+  model: model/model.pkl
