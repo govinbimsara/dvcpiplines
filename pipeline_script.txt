@@ -1,0 +1,16 @@
+dvc stage add -n preprocess \
+    -p preprocess.input,preprocess.output,preprocess.X,preprocess.y,preprocess.random_state \
+    -d src/preprocess.py -d data/raw/data.csv \
+    -o data/preprocessed/data.csv -o data/test/X_data.csv -o data/test/y_data.csv \
+    python src/preprocess.py
+
+dvc stage add -n train \
+    -p train.input,train.model,train.random_state,train.n_estimators,train.max_depth,train.min_samples_split,train.min_samples_leaf \
+    -d src/train.py -d data/preprocessed/data.csv \
+    -o model/model.pkl \
+    python src/train.py
+
+dvc stage add -n evaluate \
+    -p eval.X,eval.v,eval.model \
+    -d src/evaluate.py -d data/test/X_data.csv -d data/test/y_data.csv -d model/model.pkl \
+    python src/evaluate.py
